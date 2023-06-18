@@ -31,7 +31,7 @@ public class ContentCollectionRepository {
     private void init() {
         Content c = new Content(
                 1,
-                "My First Blog Post",
+                "My First Blog Pos",
                 "My first blog post",
                 Status.IDEA,
                 Type.ARTICLE,
