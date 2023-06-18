@@ -1,10 +1,10 @@
-package com.example.springboot;
+package dev.ebran.contentcalendar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
