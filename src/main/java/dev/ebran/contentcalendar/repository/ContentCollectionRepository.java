@@ -13,23 +13,35 @@ import java.util.Optional;
 
 @Repository
 public class ContentCollectionRepository {
-    private final List<Content> content = new ArrayList<>();
+    private final List<Content> contentList = new ArrayList<>();
 
     public ContentCollectionRepository() {
 
     }
 
     public List<Content> findAll() {
-        return content;
+        return contentList;
     }
 
     public Optional<Content> findById(Integer id) {
-        return content.stream().filter(c -> c.id().equals(id)).findFirst();
+        return contentList.stream().filter(c -> c.id().equals(id)).findFirst();
     }
 
+    public Boolean existsById(Integer id) {
+        return contentList.stream().filter(c -> c.id().equals(id)).count() == 1;
+    }
+
+    public void save(Content content) {
+        contentList.removeIf(c -> c.id().equals(content.id()));
+        contentList.add(content);
+    }
+
+    public void delete(Integer id) {
+        contentList.removeIf(c -> c.id().equals(id));
+    }
     @PostConstruct
     private void init() {
-        Content c = new Content(
+        Content content = new Content(
                 1,
                 "My First Blog Post",
                 "My first blog post",
@@ -38,6 +50,6 @@ public class ContentCollectionRepository {
                 LocalDateTime.now(),
                 null,
                 "");
-        content.add(c);
+        contentList.add(content);
     }
 }
